@@ -1,0 +1,13 @@
+# Example team defaults for ShieldScan
+# Copy to .shieldscan.yaml in your repository root and edit as needed.
+
+target: .
+rules: rules/rules.yaml
+workers: 8
+format: table
+# output: reports/shieldscan-report.json
+profile: local
+# baseline: reports/baseline.json
+new_findings_only: false
+# write_baseline: reports/baseline.json
+fail_on_findings: true

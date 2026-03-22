@@ -1,0 +1,56 @@
+rules:
+  - id: PY001
+    language: python
+    vulnerability_type: Insecure TLS Verification Disabled
+    severity: high
+    description: Detects requests calls where certificate verification is disabled.
+    cwe: CWE-295
+    confidence: high
+    remediation: Enable TLS certificate verification and use trusted CA bundles.
+    references:
+      - https://cwe.mitre.org/data/definitions/295.html
+      - https://docs.python-requests.org/en/latest/user/advanced/#ssl-cert-verification
+    node_types: [call]
+    match_regex: "\\brequests\\.(get|post|put|delete|request)\\s*\\([^\\n)]*verify\\s*=\\s*False"
+
+  - id: PY002
+    language: python
+    vulnerability_type: Command Injection Risk
+    severity: critical
+    description: Detects subprocess calls that execute through a shell.
+    cwe: CWE-78
+    confidence: high
+    remediation: Avoid shell=True and pass command arguments as a list with strict input validation.
+    references:
+      - https://cwe.mitre.org/data/definitions/78.html
+      - https://docs.python.org/3/library/subprocess.html#security-considerations
+    node_types: [call]
+    match_regex: "\\bsubprocess\\.(run|Popen|call|check_output|check_call)\\s*\\([^\\n)]*shell\\s*=\\s*True"
+
+  - id: JS001
+    language: javascript
+    vulnerability_type: Dynamic Code Execution
+    severity: critical
+    description: Detects use of eval which can execute untrusted input.
+    cwe: CWE-95
+    confidence: high
+    remediation: Remove eval usage and replace with safe parsing or explicit dispatch logic.
+    references:
+      - https://cwe.mitre.org/data/definitions/95.html
+      - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
+    node_types: [call_expression]
+    match_regex: "\\beval\\s*\\("
+
+  - id: JS002
+    language: javascript
+    vulnerability_type: Shell Command Injection Risk
+    severity: high
+    description: Detects child_process.exec usage.
+    cwe: CWE-78
+    confidence: medium
+    remediation: Prefer child_process.execFile or spawn with validated argument arrays.
+    references:
+      - https://cwe.mitre.org/data/definitions/78.html
+      - https://nodejs.org/api/child_process.html
+    node_types: [call_expression]
+    match_regex: "\\b(child_process|cp)\\.exec\\s*\\("

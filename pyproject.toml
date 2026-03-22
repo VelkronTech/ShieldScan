@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shieldscan"
+version = "0.1.0"
+description = "Local multi-language CLI security scanner powered by Tree-sitter"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "VelkronTech" }]
+dependencies = [
+  "tree-sitter>=0.22.3",
+  "tree-sitter-python>=0.21.0",
+  "tree-sitter-javascript>=0.21.4",
+  "PyYAML>=6.0.1",
+  "rich>=13.7.1",
+]
+
+[project.scripts]
+shieldscan = "main:main"
+
+[tool.setuptools]
+packages = ["shieldscan"]
+py-modules = ["main", "scanner"]

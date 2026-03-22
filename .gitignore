@@ -1,0 +1,34 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Packaging/build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local ShieldScan config overrides (keep example tracked)
+.shieldscan.yaml
+.shieldscan.yml
+
+# Generated scanner outputs
+reports/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
