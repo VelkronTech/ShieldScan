@@ -11,6 +11,7 @@ rules:
       - https://cwe.mitre.org/data/definitions/295.html
       - https://docs.python-requests.org/en/latest/user/advanced/#ssl-cert-verification
     node_types: [call]
+    match_mode: semantic
     match_regex: "\\brequests\\.(get|post|put|delete|request)\\s*\\([^\\n)]*verify\\s*=\\s*False"
 
   - id: PY002
@@ -25,6 +26,7 @@ rules:
       - https://cwe.mitre.org/data/definitions/78.html
       - https://docs.python.org/3/library/subprocess.html#security-considerations
     node_types: [call]
+    match_mode: semantic
     match_regex: "\\bsubprocess\\.(run|Popen|call|check_output|check_call)\\s*\\([^\\n)]*shell\\s*=\\s*True"
 
   - id: JS001
@@ -39,6 +41,7 @@ rules:
       - https://cwe.mitre.org/data/definitions/95.html
       - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
     node_types: [call_expression]
+    match_mode: semantic
     match_regex: "\\beval\\s*\\("
 
   - id: JS002
@@ -53,4 +56,5 @@ rules:
       - https://cwe.mitre.org/data/definitions/78.html
       - https://nodejs.org/api/child_process.html
     node_types: [call_expression]
+    match_mode: semantic
     match_regex: "\\b(child_process|cp)\\.exec\\s*\\("

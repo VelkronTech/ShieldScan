@@ -4,10 +4,23 @@
 target: .
 rules: rules/rules.yaml
 workers: 8
+include:
+	- "**/*.py"
+	- "**/*.js"
+exclude:
+	- "tests/**"
+incremental: true
+cache_file: .shieldscan-cache.json
 format: table
 # output: reports/shieldscan-report.json
 profile: local
 # baseline: reports/baseline.json
 new_findings_only: false
 # write_baseline: reports/baseline.json
+# ignore_file: .shieldscanignore.yaml
 fail_on_findings: true
+
+# CI profile suggestion:
+# profile: ci
+# format: sarif
+# output: reports/shieldscan.sarif

@@ -1,0 +1,12 @@
+# Example suppressions for known/accepted findings.
+# Use either fingerprint, or rule_id + path_glob. Expired entries are ignored.
+
+suppressions:
+  - fingerprint: "2c9638cde944ed2a"
+    reason: "Accepted risk in test fixture"
+    expires_on: "2099-12-31"
+
+  - rule_id: "PY001"
+    path_glob: "*sample_vulnerable.py"
+    reason: "Demo fixture false-positive suppression"
+    expires_on: "2099-12-31"

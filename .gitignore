@@ -23,6 +23,8 @@ dist/
 # Local ShieldScan config overrides (keep example tracked)
 .shieldscan.yaml
 .shieldscan.yml
+.shieldscan-cache.json
+.shieldscan-benchmark-cache.json
 
 # Generated scanner outputs
 reports/

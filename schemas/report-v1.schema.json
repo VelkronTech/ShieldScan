@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shieldscan.dev/schemas/report-v1.schema.json",
+  "title": "ShieldScan Report v1",
+  "type": "object",
+  "required": [
+    "files_scanned",
+    "files_skipped",
+    "total_findings",
+    "suppressed_findings",
+    "severity_counts",
+    "findings"
+  ],
+  "properties": {
+    "files_scanned": { "type": "integer", "minimum": 0 },
+    "files_skipped": { "type": "integer", "minimum": 0 },
+    "total_findings": { "type": "integer", "minimum": 0 },
+    "suppressed_findings": { "type": "integer", "minimum": 0 },
+    "severity_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "fingerprint",
+          "file_path",
+          "line_number",
+          "language",
+          "vulnerability_type",
+          "severity",
+          "rule_id",
+          "description",
+          "references"
+        ],
+        "properties": {
+          "fingerprint": { "type": "string", "minLength": 8 },
+          "file_path": { "type": "string" },
+          "line_number": { "type": "integer", "minimum": 1 },
+          "language": { "type": "string" },
+          "vulnerability_type": { "type": "string" },
+          "severity": { "type": "string", "enum": ["critical", "high", "medium", "low", "info"] },
+          "rule_id": { "type": "string" },
+          "description": { "type": "string" },
+          "cwe": { "type": ["string", "null"] },
+          "confidence": { "type": ["string", "null"] },
+          "remediation": { "type": ["string", "null"] },
+          "references": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

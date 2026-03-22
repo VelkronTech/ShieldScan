@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shieldscan.dev/schemas/config-v1.schema.json",
+  "title": "ShieldScan Config v1",
+  "type": "object",
+  "properties": {
+    "target": { "type": "string" },
+    "rules": { "type": "string" },
+    "workers": { "type": "integer", "minimum": 1 },
+    "include": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "exclude": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "incremental": { "type": "boolean" },
+    "cache_file": { "type": "string" },
+    "format": { "type": "string", "enum": ["table", "json", "sarif"] },
+    "output": { "type": "string" },
+    "profile": { "type": "string", "enum": ["local", "ci"] },
+    "baseline": { "type": "string" },
+    "new_findings_only": { "type": "boolean" },
+    "write_baseline": { "type": "string" },
+    "ignore_file": { "type": "string" },
+    "fail_on_findings": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
